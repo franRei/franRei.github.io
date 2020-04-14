@@ -10,5 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		ev.preventDefault();
 		ev.stopPropagation();
 		return false;
+
+		//another comment
 	})
 })
