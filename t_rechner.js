@@ -12,5 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		return false;
 
 		//another comment
+		//just another
 	})
 })
