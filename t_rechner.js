@@ -63,3 +63,70 @@ document.querySelectorAll("#calc button").forEach(function (b) {
 			b.addEventListener("click", clear);
 		break;
 	}
+
+document.addEventListener("keypress", function (ev) {
+	//decimal point, ASCII von Komma und Punkt"x²"
+	if ([45, 46].includes(ev.charCode)) {
+		//, .
+		input(".");
+	}
+
+	//digits
+	if ([48, 49, 50, 51, 52, 53, 54, 55, 56, 57].includes(ev.charCode)) {
+		//ASCII für 0-9
+		input(ev.charCode - 48);
+	}
+	//operator
+	if ([42, 43, 45, 47].includes(ev.charCode)) {
+		//ASCII für operator *+-/
+		operator(
+			["x", "+", "-", "÷"][
+				[42, 43, 45, 47].indexOf(ev.charCode)
+			]
+		);
+	}
+
+	//result
+	if (ev.charCode == 61) {
+		//ASCII für =
+		result();
+	}
+
+	//clear
+	if ([67, 99].includes(ev.charCode)) {
+		//C, c
+		clear();
+	}
+
+	//log
+	if ([76, 108].includes(ev.charCode)) {
+		//L, l
+		extra("ln");
+	}
+
+	//root
+	if ([82, 114].includes(ev.charCode)) {
+		//R, r
+		extra("√");
+	}
+
+	//square
+	if ([83, 115].includes(ev.charCode)) {
+		//S, s
+		extra("x²");
+	}
+
+	//additional clear and results
+	switch (ev.code) {
+		case "Backspace":
+		case "Delete":
+			clear();
+		break;
+
+		case "Enter":
+		case "NumpadEnter":
+			result();
+		break;
+	}
+
+});
