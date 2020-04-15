@@ -15,3 +15,51 @@ document.addEventListener("DOMContentLoaded", function () {
 		//just another
 	})
 })
+
+// button functionalities
+document.querySelectorAll("#calc button").forEach(function (b) { 
+	var c = b.textContent;
+
+	switch (c) {
+
+		case "9":
+		case "8":
+		case "7":
+		case "6":
+		case "5":
+		case "4":
+		case "3":
+		case "2":
+		case "1":
+		case "0":
+		case ".":
+			b.addEventListener("click", function () {
+				input(c);
+			});
+		break;
+
+		case "+":
+		case "-":
+		case "×":
+		case "÷":
+			b.addEventListener("click", function () {
+				operator(c);
+			});
+		break;
+
+		case "√":
+		case "x²":
+		case "ln":
+			b.addEventListener("click", function () {
+				extra(c);
+			});
+		break;
+
+		case "=":
+			b.addEventListener("click", result);
+		break;
+
+		case "C":
+			b.addEventListener("click", clear);
+		break;
+	}
