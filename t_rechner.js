@@ -130,3 +130,41 @@ document.addEventListener("keypress", function (ev) {
 	}
 
 });
+
+function extra (type) {
+	switch (type) {
+		case "√":
+			out.textContent = Math.sqrt(result(true));
+		break;
+
+		case "x²":
+			out.textContent = Math.pow(result(true), 2);
+		break;
+
+		case "ln":
+			out.textContent = Math.log(result(true));
+		break;
+	}
+	overwrite = true;
+}
+
+function result (noDisplay) {
+	var input = out.textContent,
+		r = 0
+
+	input = input.replace(/x/g, "*").replace(/÷/g, "/");
+
+	input = input.replace(/[^0-9. +\-*\/]/g, "");
+
+	try {
+		r = eval(input);
+	} catch (e) {
+		r = 0;
+	}
+
+	if (noDisplay !== true) {
+		out.textContent = r;
+		overwrite = true;
+	}
+	return r;
+}
